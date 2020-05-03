@@ -197,7 +197,9 @@
 	"z.vuex.namespaced.getters.js": {
 		"prefix": "z.vuex.namespaced.getters.js",
 		"body": [
-			"const ${1:exportGetterName} = state => state.${6:objectPath};",
+			"const ${1:exportGetterName} = (state, getters, rootState, rootGetters) => {",
+			"  return state.${6:objectPath};",
+			"}",
 			"",
 			"export default {",
 			"  ${1:exportGetterName},",
@@ -212,10 +214,10 @@
 		"body": [
 			"import { ${1:promiseName} } from '@/api'",
 			"",
-			"const ${6:exportActionName} = (context) => {",
+			"const ${6:exportActionName} = ({ dispatch, commit, getters, rootGetters }) => {",
 			"  ${1:promiseName}",
 			"     .then((resData) => {",
-			"  		 context.commit('${11:MUTATION_TYPE}', resData);",
+			"  		  commit('${11:MUTATION_TYPE}', resData);",
 			"			})",
 			"			.catch((error) => {",
 			"  			console.error($0error)",
