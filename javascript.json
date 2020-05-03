@@ -20,7 +20,7 @@
 		"triggerAssist": false,
 		"description": "输出...mapState['stateKey1', 'stateKey2', 'stateKeyAny']"
 	},
-	
+
 	"z.vuex....mapMutations": {
 		"prefix": "z.vuex....mapMutations([",
 		"body": [
@@ -32,7 +32,7 @@
 		"triggerAssist": false,
 		"description": "输出...mapMutations['mutationFuncName1', 'mutationFuncName2', 'mutationFuncNameAny']"
 	},
-	
+
 	"z.vuex....mapActions": {
 		"prefix": "z.vuex....mapActions([",
 		"body": [
@@ -44,7 +44,7 @@
 		"triggerAssist": false,
 		"description": "输出...mapActions['actionFuncName1', 'actionFuncName2', 'actionFuncNameAny']"
 	},
-	
+
 	"z.vuex.store.dispatch": {
 		"prefix": "z.vuex.store.dispatch",
 		"body": [
@@ -93,7 +93,7 @@
 		"triggerAssist": false,
 		"description": "输出一个具有相对完整格式的vuex.store对象编写样板,基本是完整文件,改改就能用"
 	},
-	
+
 	"z.vuex.namespaced.store.js": {
 		"prefix": "z.vuex.namespaced.store.js",
 		"body": [
@@ -110,7 +110,7 @@
 			"    //state: ()=>({})",
 			"",
 			"    //getters: {",
-			"    //  getter(state, getters, rootState, rootGetters){}",	
+			"    //  getter(state, getters, rootState, rootGetters){}",
 			"    //}",
 			"",
 			"    //actions: {",
@@ -127,8 +127,8 @@
 		"triggerAssist": false,
 		"description": "输出一个带有namespaced,动态注册模块的，具有相对完整格式的vuex.store对象编写样板,基本是完整文件,改改就能用"
 	},
-	
-	
+
+
 	"z.vuex.namespaced...mapState": {
 		"prefix": "z.vuex.namespaced...mapState",
 		"body": [
@@ -141,7 +141,7 @@
 		"triggerAssist": false,
 		"description": "输出...mapState({'stateKey1': 'stateValue1', 'stateKey2':'stateValue2'})"
 	},
-	
+
 	"z.vuex.namespaced...mapMutations": {
 		"prefix": "z.vuex.namespaced...mapMutations([",
 		"body": [
@@ -153,7 +153,7 @@
 		"triggerAssist": false,
 		"description": "输出...mapMutations({'mutationFuncName1': state=>state, 'mutationFuncName2': state=>state})"
 	},
-	
+
 	"z.vuex.namespaced...mapActions": {
 		"prefix": "z.vuex.namespaced...mapActions([",
 		"body": [
@@ -165,7 +165,7 @@
 		"triggerAssist": false,
 		"description": "输出...mapActions['actionFuncName1', 'actionFuncName2', 'actionFuncNameAny']"
 	},
-	
+
 	"z.vuex.namespaced.dispatch": {
 		"prefix": "z.vuex.namespaced.dispatch",
 		"body": [
@@ -177,8 +177,81 @@
 		],
 		"triggerAssist": false,
 		"description": "输出store.dispatch({type: 'actionName', 'payloadKey': payloadValue})"
+	},
+
+	"z.vuex.namespaced.mutations.js": {
+		"prefix": "z.vuex.namespaced.mutations.js",
+		"body": [
+			"const ${1:exportMutationName} = (state, ${6:payloadName}) => {",
+			"	 state.${6:payloadName} = ${6:payloadName};",
+			"}",
+			"",
+			"export default {",
+			"  ${1:exportMutationName},",
+			"}"
+		],
+		"triggerAssist": false,
+		"description": "输出 @/store/modules/moduleName/mutations.js 样板代码"
+	},
+
+	"z.vuex.namespaced.getters.js": {
+		"prefix": "z.vuex.namespaced.getters.js",
+		"body": [
+			"const ${1:exportGetterName} = state => state.${6:objectPath};",
+			"",
+			"export default {",
+			"  ${1:exportGetterName},",
+			"}"
+		],
+		"triggerAssist": false,
+		"description": "输出 @/store/modules/moduleName/getters.js 样板代码"
+	},
+
+	"z.vuex.namespaced.actions.js": {
+		"prefix": "z.vuex.namespaced.actions.js",
+		"body": [
+			"import { ${1:promiseName} } from '@/api'",
+			"",
+			"const ${6:exportActionName} = (context) => {",
+			"  ${1:promiseName}",
+			"     .then((resData) => {",
+			"  		 context.commit('${11:MUTATION_TYPE}', resData);",
+			"			})",
+			"			.catch((error) => {",
+			"  			console.error($0error)",
+			"			})",
+			"		};",
+			"",
+			"export default {",
+			"  ${6:exportActionName},",
+			"};"
+		],
+		"triggerAssist": false,
+		"description": "输出 @/store/modules/moduleName/getters.js 样板代码"
+	},
+
+	"z.vuex.namespaced.index.js": {
+		"prefix": "z.vuex.namespaced.index.js",
+		"body": [
+			"import actions from './actions'",
+			"import getters from './getters'",
+			"import mutations from './mutations'",
+			"",
+			"const state = {",
+			"  ${1:stateKey}: ${2:stateValue},$0",
+			"};",
+			"",
+			"export default {",
+			"  namespaced: true,",
+			"  state,",
+			"  actions,",
+			"  getters,",
+			"  mutations,",
+			"}"
+		],
+		"triggerAssist": false,
+		"description": "输出 @/store/modules/moduleName/index.js 样板代码"
 	}
-	
+
 
 }
-
