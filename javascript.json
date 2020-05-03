@@ -1,0 +1,184 @@
+{
+	"console.log": {
+		"prefix": "logtwo",
+		"body": [
+			"console.log('$1');",
+			"\tconsole.log('$2');"
+		],
+		"triggerAssist": false,
+		"description": "Log output to console twice"
+	},
+
+	"z.vuex....mapState": {
+		"prefix": "z.vuex....mapState",
+		"body": [
+			"  ...mapState([",
+			"    '${1:isLogin}',$2",
+			"    ${3: }",
+			"  ]),$0"
+		],
+		"triggerAssist": false,
+		"description": "输出...mapState['stateKey1', 'stateKey2', 'stateKeyAny']"
+	},
+	
+	"z.vuex....mapMutations": {
+		"prefix": "z.vuex....mapMutations([",
+		"body": [
+			"...mapMutations([",
+			"  ${1:实际mutation}",
+			"  ${2: }",
+			"])$0"
+		],
+		"triggerAssist": false,
+		"description": "输出...mapMutations['mutationFuncName1', 'mutationFuncName2', 'mutationFuncNameAny']"
+	},
+	
+	"z.vuex....mapActions": {
+		"prefix": "z.vuex....mapActions([",
+		"body": [
+			"...mapActions([",
+			"  ${1:实际action}",
+			"  ${2: }",
+			"])$0"
+		],
+		"triggerAssist": false,
+		"description": "输出...mapActions['actionFuncName1', 'actionFuncName2', 'actionFuncNameAny']"
+	},
+	
+	"z.vuex.store.dispatch": {
+		"prefix": "z.vuex.store.dispatch",
+		"body": [
+			"store.dispatch({",
+			"	type: ${1:actionName},",
+			"	${2:payloadKey}: ${3:payloadValue}",
+			" ${4: }",
+			"})$0"
+		],
+		"triggerAssist": false,
+		"description": "输出store.dispatch({type: 'actionName', 'payloadKey': payloadValue})"
+	},
+
+	"z.vuex.store.js": {
+		"prefix": "z.vuex.store.js",
+		"body": [
+			"import Vue from 'vue'",
+			"import Vuex from 'vuex'",
+			"",
+			"Vue.use(Vuex)",
+			"",
+			"",
+			"const store = new Vuex.Store({",
+			"	state: {",
+			"	    ${1:isLogin}: ${2:someValue}",
+			"	},",
+			"	mutations: {",
+			"		/* 定义一个同步操作状态的方法 */",
+			"	  //  store${3:Login} (state, payload) {",
+			"    //    payload = Object.prototype.toString.call(payload) === '[object Object]' ? {} : payload",
+			"	  //    state.${4:isLogin} = payload",
+			"	  //  }",
+			"	}",
+			"})",
+			"",
+			"actions: {",
+			"    /* 定义一个异步步操作状态的方法 */",
+			"	  //  increment ({commit}) {",
+			"    //  /*写异步逻辑后执行以下【context.】commit('')*/",
+			"    //  /*  commit('${5:mutationFuncName}')*/",
+			"    //}",
+			"  }",
+			"",
+			"export default store$0"
+		],
+		"triggerAssist": false,
+		"description": "输出一个具有相对完整格式的vuex.store对象编写样板,基本是完整文件,改改就能用"
+	},
+	
+	"z.vuex.namespaced.store.js": {
+		"prefix": "z.vuex.namespaced.store.js",
+		"body": [
+			"import {Store, mapState, mapGetters, mapMutations, mapActions} from 'vuex'",
+			"",
+			"const store = new Vuex.Store({",
+			"	$1",
+			"})",
+			"",
+			"// 注册嵌套模块 `moduleSeg`",
+			"store.registerModule(['${2:moduleSeg}'], {",
+			"  modules: {",
+			"  namespacedd: true",
+			"    //state: ()=>({})",
+			"",
+			"    //getters: {",
+			"    //  getter(state, getters, rootState, rootGetters){}",	
+			"    //}",
+			"",
+			"    //actions: {",
+			"    //  action({ dispatch, getters, commit, rootGetters }){}",
+			"    //}",
+			"",
+			"    //mutations: {",
+			"    //  mutation(state, payload){}",
+			"    //}",
+			"",
+			"  }",
+			"})"
+		],
+		"triggerAssist": false,
+		"description": "输出一个带有namespaced,动态注册模块的，具有相对完整格式的vuex.store对象编写样板,基本是完整文件,改改就能用"
+	},
+	
+	
+	"z.vuex.namespaced...mapState": {
+		"prefix": "z.vuex.namespaced...mapState",
+		"body": [
+			"  ...mapState({",
+			"    '${1:stateKey1}',${2:stateValue2}",
+			"    ${3: }",
+			"    }",
+			"  ]),$0"
+		],
+		"triggerAssist": false,
+		"description": "输出...mapState({'stateKey1': 'stateValue1', 'stateKey2':'stateValue2'})"
+	},
+	
+	"z.vuex.namespaced...mapMutations": {
+		"prefix": "z.vuex.namespaced...mapMutations([",
+		"body": [
+			"...mapMutations([",
+			"  ${1:mutationAlias}: state=>state",
+			"  ${3: }",
+			"])$0"
+		],
+		"triggerAssist": false,
+		"description": "输出...mapMutations({'mutationFuncName1': state=>state, 'mutationFuncName2': state=>state})"
+	},
+	
+	"z.vuex.namespaced...mapActions": {
+		"prefix": "z.vuex.namespaced...mapActions([",
+		"body": [
+			"...mapActions('${1:namespaced/module}', [",
+			"  ${2:实际action}",
+			"  ${3: }",
+			"])$0"
+		],
+		"triggerAssist": false,
+		"description": "输出...mapActions['actionFuncName1', 'actionFuncName2', 'actionFuncNameAny']"
+	},
+	
+	"z.vuex.namespaced.dispatch": {
+		"prefix": "z.vuex.namespaced.dispatch",
+		"body": [
+			"dispatch(",
+			"	'${1:actionName}',",
+			"	${2:payloadKey}: ${3:payloadValue}",
+			" ${4: }",
+			"})$0"
+		],
+		"triggerAssist": false,
+		"description": "输出store.dispatch({type: 'actionName', 'payloadKey': payloadValue})"
+	}
+	
+
+}
+
